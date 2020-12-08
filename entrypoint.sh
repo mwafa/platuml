@@ -2,6 +2,7 @@
 
 apt update
 apt install -y graphviz default-jre
+apt install -y curl
 
 mkdir -p /opt/plantuml
 cd /opt/plantuml
