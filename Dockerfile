@@ -1,7 +1,10 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
-COPY entrypoint.sh /entrypoint.sh
+RUN apt update && apt install -y graphviz default-jre curl
 
-RUN chmod +x /entrypoint.sh
+RUN mkdir -p /opt/plantuml
+WORKDIR /opt/plantuml
+RUN curl -JLO http://sourceforge.net/projects/plantuml/files/plantuml.jar/download
 
-RUN /entrypoint.sh
+COPY run.sh /usr/local/bin/plantuml
+RUN chmod a+x /usr/local/bin/plantuml
