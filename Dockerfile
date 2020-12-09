@@ -1,6 +1,10 @@
-FROM ubuntu:20.04
+FROM alpine:3.10
 
-RUN apt update && apt install -y graphviz default-jre curl
+RUN apk add --no-cache graphviz openjdk11-jre curl
+
+RUN apk add --no-cache msttcorefonts-installer fontconfig
+RUN update-ms-fonts
+RUN fc-cache -f
 
 RUN mkdir -p /opt/plantuml
 WORKDIR /opt/plantuml
